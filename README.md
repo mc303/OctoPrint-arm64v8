@@ -30,7 +30,3 @@ docker run -d -v ./config:/home/octoprint/.octoprint --device /dev/ttyACM0:/dev/
 ## FFMPEG
 
 Octoprint allows you to make timelapses using an IP webcam and ffmpeg. It is installed in `/opt/ffmpeg`
-
-## Cura Engine
-
-Octoprint allows you to import .STL files and slice them directly in the application. For this you need to upload the profiles that you want to use (you can export them from Cura). Cura Engine is installed in `/opt/cura/CuraEngine`.
