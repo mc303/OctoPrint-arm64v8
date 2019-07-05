@@ -8,6 +8,8 @@ services:
   - docker
 
 script:
+  # prepare qemu
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - echo "Building octroprint branch/tag $TAG into mc303/octoprint-arm64v8:$DOCKER_TAG"
   - docker build --build-arg tag=$TAG -t mc303/octoprint-arm64v8:$DOCKER_TAG .
   - if [[ "$DOCKER_TAG" != "automatic" ]]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; fi
