@@ -1,5 +1,4 @@
-
-FROM python:2.7
+FROM arm64v8/python:2-alpine
 EXPOSE 5000
 LABEL maintainer "gaetancollaud@gmail.com"
 
@@ -9,27 +8,27 @@ ARG tag=master
 WORKDIR /opt/octoprint
 
 # In case of alpine
-#RUN apk update && apk upgrade \
-#    && apk add --no-cache bash git openssh gcc\
-#		&& pip install virtualenv \
-#		&& rm -rf /var/cache/apk/*
+RUN apk update && apk upgrade \
+    && apk add --no-cache bash git openssh gcc\
+		&& pip install virtualenv \
+		&& rm -rf /var/cache/apk/*
 
 #install ffmpeg
 RUN cd /tmp \
-  && wget -O ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-i686-static.tar.xz \
+  && wget -O ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz \
 	&& mkdir -p /opt/ffmpeg \
 	&& tar xvf ffmpeg.tar.xz -C /opt/ffmpeg --strip-components=1 \
   && rm -Rf /tmp/*
 
 #install Cura
-RUN cd /tmp \
-  && wget https://github.com/Ultimaker/CuraEngine/archive/${CURA_VERSION}.tar.gz \
-  && tar -zxf ${CURA_VERSION}.tar.gz \
-	&& cd CuraEngine-${CURA_VERSION} \
-	&& mkdir build \
-	&& make \
-	&& mv -f ./build /opt/cura/ \
-  && rm -Rf /tmp/*
+#RUN cd /tmp \
+#  && wget https://github.com/Ultimaker/CuraEngine/archive/${CURA_VERSION}.tar.gz \
+#  && tar -zxf ${CURA_VERSION}.tar.gz \
+#	&& cd CuraEngine-${CURA_VERSION} \
+#	&& mkdir build \
+#	&& make \
+#	&& mv -f ./build /opt/cura/ \
+# && rm -Rf /tmp/*
 
 #Create an octoprint user
 RUN useradd -ms /bin/bash octoprint && adduser octoprint dialout
