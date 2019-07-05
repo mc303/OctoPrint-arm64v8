@@ -38,9 +38,16 @@ USER octoprint
 RUN mkdir /home/octoprint/.octoprint
 
 #Install Octoprint
-RUN git clone --branch $tag https://github.com/foosel/OctoPrint.git /opt/octoprint \
-  && virtualenv venv \
-	&& ./venv/bin/python setup.py install
+#RUN git clone --branch $tag https://github.com/foosel/OctoPrint.git /opt/octoprint \
+#  && virtualenv venv \
+#	&& ./venv/bin/python setup.py install
+
+# Install OctoPrint
+RUN cd /opt/octoprint \
+    && virtualenv venv \
+    && source venv/bin/activate
+    && pip install pip --upgrade
+    && pip install https://get.octoprint.org/latest 
 
 VOLUME /home/octoprint/.octoprint
 
