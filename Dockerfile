@@ -9,7 +9,7 @@ WORKDIR /opt/octoprint
 
 # In case of alpine
 RUN apk update && apk upgrade \
-    && apk add --no-cache bash git openssh gcc linux-headers musl-dev\
+    && apk add --no-cache bash git openssh libc-dev gcc musl-dev linux-headers \
 		&& pip install virtualenv \
 		&& rm -rf /var/cache/apk/*
 
