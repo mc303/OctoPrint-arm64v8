@@ -1,4 +1,4 @@
-# OctoPrint-docker [![Build Status](https://travis-ci.org/mc303/OctoPrint-arm64v8.svg?branch=master)](https://travis-ci.org/mc303 /OctoPrint-arm64v8)
+# OctoPrint-docker [![Build Status](https://travis-ci.org/mc303/OctoPrint-arm64v8.svg?branch=master)](https://travis-ci.org/mc303/OctoPrint-arm64v8)
 
 This repository contains everything you need to run [Octoprint](https://github.com/foosel/OctoPrint) in a arm64v8 docker environment.
 
