@@ -1,6 +1,5 @@
 FROM arm64v8/python:2-alpine
 EXPOSE 5000
-LABEL maintainer "gaetancollaud@gmail.com"
 
 ENV CURA_VERSION=15.04.6
 ARG tag=master
@@ -10,8 +9,8 @@ WORKDIR /opt/octoprint
 # In case of alpine
 RUN apk update && apk upgrade \
     && apk add --no-cache bash git openssh libc-dev gcc musl-dev linux-headers \
-		&& pip install virtualenv 
-#		&& rm -rf /var/cache/apk/*
+		&& pip install virtualenv \
+		&& rm -rf /var/cache/apk/*
 
 #install ffmpeg
 RUN cd /tmp \
