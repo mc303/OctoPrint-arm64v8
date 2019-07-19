@@ -3,7 +3,13 @@ sudo: required
 env:
   global:
     - TAG=master DOCKER_TAG=automatic
-
+    
+matrix:
+  # TARGET = Base image architecture to be used
+  # ARCH = qemu binary to be downloaded from https://github.com/multiarch/qemu-user-static/releases
+  # TAG = Tag to be applied to the image when upload to DockerHub
+  - TARGET=arm64v8 ARCH=aarch64 TAG=arm64 RELEASE=arm64
+    
 services:
   - docker
 
